@@ -1,0 +1,7 @@
+/**
+ * Created by jruz on 8/7/17.
+ */
+<% if (params[:movie_id] == 'all') %>
+alert('Rent was succesfully created');
+$(window).attr('location','<%= root_path %>');
+<% end %>

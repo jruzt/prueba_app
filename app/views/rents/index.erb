@@ -1,0 +1,11 @@
+<div class="container">
+    <% Rent.all.each do |rent| %>
+      <ul class="list-group js-rent" data-id="<%= rent.id %>">
+        <li class="list-group-item js-rent-username">User Name: <%= rent.user.full_name %></li>
+        <li class="list-group-item js-rent-quantity">Movies Quantity: <%= rent.movies %></li>
+        <li class="list-group-item js-rent-status">Status: <%= rent.active? ?  "Active" : "Inactive" %></li>
+        <li class="list-group-item js-rented-at">Rented at: <%= rent.created_at %></li>
+        <li><%= button_tag "Devolver renta", class: "btn btn-success js-return-rent" %></li>
+      </ul>
+    <% end %>
+</div>

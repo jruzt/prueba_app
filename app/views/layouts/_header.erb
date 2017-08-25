@@ -1,0 +1,20 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <nav>
+      <div class="container-fluid">
+        <%= link_to "My Video Club", root_path, class: "logo" %>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+              <li class="white-text">Logged in as <strong><%= current_user.email %></strong>.</li>
+              <li><%= link_to 'Edit profile', edit_user_registration_path, class: "logo" %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "logo"%></li>
+              <li><%= link_to "My cart", my_cart_path, class: "logo" %></li>
+          <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path, class: "logo" %></li>
+              <li><%= link_to "Login", new_user_session_path, class: "logo" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

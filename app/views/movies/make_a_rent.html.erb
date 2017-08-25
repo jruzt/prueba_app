@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Select a movie to add to the kart</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @movies.each do |movie| %>
+            <tr class="js-movie <%= 'success' if current_user.cart.cart_lines.where(movie_id: movie.id).first %>"
+                data-id="<%= movie.id %>">
+              <td class="js-movie-name"><%= movie.name %></td>
+              <td class="js-movie-description"><%= movie.description %></td>
+              <td><%= "$#{movie.price}" %></td>
+              <td><%= link_to "View details", :action => :show, :id => movie.id %></td>
+              <td><%= button_tag "Add to cart",
+                class: "js-add-to-cart btn btn-default btn-info #{'hidden' if current_user.cart.cart_lines.where(movie_id: movie.id).first}", 'data-id': movie.id %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

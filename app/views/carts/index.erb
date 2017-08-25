@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="container">
+    <% if current_user.cart.cart_lines.empty? %>
+      <h1>There are no movies in your cart actually</h1>
+    <% else %>
+      <h1>These are the movies you actually have in your car</h1>
+      <table class="table js-table">
+        <thead>
+          <th>Name</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+        <% current_user.cart.cart_lines.each do |movie| %>
+            <tr class="js-movie" data-id="<%= movie.id %>">
+              <td class="js-movie-name"><%= link_to movie.movie_name, controller: "movies", action: "show", id: movie.movie_id %></td>
+              <td><%= "$#{movie.movie_price}" %></td>
+              <td><%= button_tag "Remover del carrito", class: "btn btn-default btn-warning js-remove" %></td>
+            </tr>
+        <% end %>
+          <tr class="danger js-total-row">
+            <td><strong>Total</strong></td>
+            <td class="js-total-price"><strong><%= "$#{current_user.cart.total}" %></strong></td>
+            <td>
+              <%= button_tag "Finalizar renta" , class: "btn btn-default btn-success js-finish-rent" %>
+              <%= button_tag "Remover todas", class: "btn btn-danger js-remove-all" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        <%= link_to "Seguir comprando", make_a_rent_path %>
+    <% end %>
+  </div>
+</div>

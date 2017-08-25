@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Video Club</h1>
+  <% if current_user.nil? || !current_user.admin?%>
+    <p><%= link_to "Show all movies", movies_path %></p>
+    <p><%= link_to "Rent a movie", make_a_rent_path %></p>
+  <% elsif current_user.admin? %>
+    <p><%= link_to "Active rents", active_rents_path %></p>
+    <p><%= link_to "Show all movies", movies_path %></p>
+    <p><%= link_to "Rent a movie", make_a_rent_path %></p>
+  <% end %>
+</div>

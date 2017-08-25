@@ -1,0 +1,9 @@
+<% if (params[:movie_id] == 'all') %>
+  alert('All movies were removed from the cart');
+  $(window).attr('location','<%= root_path %>');
+<% else %>
+  $('.js-movie[data-id=<%= @cart_line.id %>]').remove();
+  $('.js-total-price').children('strong').text("$<%= @total %>");
+  alert('Movie was removed from cart');
+<% end %>
+

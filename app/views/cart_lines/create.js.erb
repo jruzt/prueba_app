@@ -1,0 +1,9 @@
+<% if !@error %>
+  alert("Agregaste la película al carrito");
+  $('.js-movie[data-id=<%= @movie.id %>]').addClass('success');
+  $('.js-add-to-cart[data-id=<%= @movie.id %>]').hide();
+<% else %>
+  alert("Esa película ya existe en el carrito");
+  $('.js-movie[data-id=<%= @movie.id %>]').addClass('background-blue');
+  $('.js-add-to-cart[data-id=<%= @movie.id %>]').hide();
+<% end %>

@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Movie description</h1>
+  <p id="notice"><%= notice %></p>
+  <p><strong>Title:</strong><%= @movie.name %></p>
+  <p><strong>Description:</strong><%= @movie.description %></p>
+  <div class="video-content">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe src="https://www.youtube.com/embed/<%= @movie.trailer[-11..-1] %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <%= link_to 'Edit', edit_movie_path(@movie) if current_user.admin? %>
+  <%= link_to 'Back', request.referer || root_path %>
+</div>
+
+
+<!--https://www.youtube.com/watch?v=Gz4e6Viq9H0-->
+<!--<div class="video-content">-->
+  <!--<div class="embed-responsive embed-responsive-16by9">-->
+    <!--<iframe src="https://www.youtube.com/embed/Gz4e6Viq9H0" frameborder="0" allowfullscreen></iframe>-->
+  <!--</div>-->
+<!--</div>-->

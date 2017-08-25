@@ -1,0 +1,4 @@
+<% if @success %>
+  alert('Rent was succesfully destroyed');
+  $(window).attr('location','<%= request.referer || root_path %>');
+<% end %>
