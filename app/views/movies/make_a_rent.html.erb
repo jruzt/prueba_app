@@ -10,14 +10,22 @@
       </thead>
       <tbody>
         <% @movies.each do |movie| %>
-            <tr class="js-movie <%= 'success' if current_user.cart.cart_lines.where(movie_id: movie.id).first %>"
+        <% if current_user.cart.cart_lines.where(movie_id: movie.id).first %>
+          <% movie_id = current_user.cart.cart_lines.where(movie_id: movie.id).first %>
+        <% end %>
+            <tr class="js-movie <%= 'success' if movie_id %>"
                 data-id="<%= movie.id %>">
               <td class="js-movie-name"><%= movie.name %></td>
               <td class="js-movie-description"><%= movie.description %></td>
               <td><%= "$#{movie.price}" %></td>
               <td><%= link_to "View details", :action => :show, :id => movie.id %></td>
-              <td><%= button_tag "Add to cart",
-                class: "js-add-to-cart btn btn-default btn-info #{'hidden' if current_user.cart.cart_lines.where(movie_id: movie.id).first}", 'data-id': movie.id %></td>
+              <% unless movie_id %>
+                <td><%= button_tag "Add to cart",
+                class: 'js-add-to-cart btn btn-default btn-info', 'data-id': movie.id %></td>
+                <% else %>
+                  <td><%= button_tag "Remove from cart",
+                  class: 'js-remove-from-cart btn btn-default btn-warning', 'data-id': movie.id %></td>
+              <% end %>
             </tr>
         <% end %>
       </tbody>

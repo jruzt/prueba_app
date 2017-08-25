@@ -5,6 +5,7 @@ $(function(){
     $('.js-remove').click(function(event){
         var movie_id = $(this).parents(".js-movie").data('id');
         var movie_name = $(this).parent().siblings('.js-movie-name').text();
+        debugger;
         //var total_price = $('.js-total-price').children('strong').text();
         var msg = "¿Do you want to remove " + movie_name + " from the cart?";
 
