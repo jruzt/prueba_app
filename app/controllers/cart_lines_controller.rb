@@ -15,6 +15,7 @@ class CartLinesController < ApplicationController
   end
 
   def destroy
+    # byebug
     if (params[:movie_id] == 'all')
       current_user.cart.cart_lines.destroy_all
       current_user.cart.update_attributes(total: nil)

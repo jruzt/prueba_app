@@ -5,5 +5,8 @@
   $('.js-movie[data-id=<%= @cart_line.id %>]').remove();
   $('.js-total-price').children('strong').text("$<%= @total %>");
   alert('Movie was removed from cart');
+  $('.js-movie[data-id=<%= @movie.id %>]').removeClass('success');
+  $('.js-add-to-cart[data-id=<%= @movie.id %>]').removeClass('btn-warning js-remove-from-cart')
+  .addClass('btn-info js-add-to-cart').text('Add to cart');
 <% end %>
 
